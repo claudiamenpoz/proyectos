@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+        <!--<link href="{request.contextPath}/resources/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen"/>-->
+        <link href="#{request.contextPath}/resources/css/otrotema.css" rel="stylesheet" type="text/css" media="screen"/>
+        <!--<link href="{request.contextPath}/resources/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>-->
+        <link href="#{request.contextPath}/resources/css/jquery.smartmenus.bootstrap.css" rel="stylesheet" type="text/css" media="screen"/>    
+        <link href="#{request.contextPath}/resources/js/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <title>Sistema Informático para Seguimeinto de Proyectos</title>     
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <div class="container" style="background-color: lightgrey">
+                <div class="col-md-10">
+                    <img src="../resources/images/bn_proyectos1.jpg" class="img-responsive img-rounded" width="100%"/>
+                </div>                            
+                <div class="col-md-2"><strong>Usuario: </strong></div>
+                <div class="col-md-2">Nombre del Usuario: </div>
+                <!--<div class="col-md-2"><p></p></div>-->
+                <div class="col-md-2"><strong>Perfil: </strong></div>
+                <div class="col-md-2">Perfil del Usuario: </div>
+            </div>
+        </div>
+
+        <div id="content" class="center_content" style="background-color: lightgoldenrodyellow">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom" style="background-color: lightgrey">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
