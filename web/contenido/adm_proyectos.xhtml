@@ -1,0 +1,667 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"        
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="./../plantillas/plantilla1.xhtml">
+
+
+        <ui:define name="content">
+            
+            
+            <ul class="nav nav-tabs">
+            <li class="active"><a href="#perfil">Perfil</a></li>
+            <li><a href="#aprobacion">Aprobación</a></li>
+            <li><a href="#facilitadores">Facilitadores</a></li>
+            </ul>
+            
+            
+            <!--
+            <ul class="nav nav-tabs">
+                <li class="active"><a aria-expanded="true" href="#perfil" data-toggle="tab">Perfil</a></li>
+                <li class=""><a aria-expanded="true" href="#aprobacion" data-toggle="tab">Aprobación</a></li>
+                <li class=""><a aria-expanded="true" href="#facilitadores" data-toggle="tab">Facilitadores</a></li>
+            </ul> -->
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="perfil">
+                    <div class="well bs-component">
+                        <h:form id="perfil" class="form-horizontal" enctype="multipart/form-data" >
+                            <p:growl id="growl" />
+                            <legend>
+                                <div class="form-header">
+                                    <!-- <button type="button" class="close"  aria-hidden="true">Cancelar ×</button> -->
+                                    <h4 class="modal-title">PERFIL DEL PROYECTO</h4>
+                                </div>
+                            </legend>
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Id</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <div>
+                                    <h:inputText id="id" value="#{nombreManejagor.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-2">
+                                    <label >Fecha de Ingreso</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <p:calendar id="fecing"
+                                                    value="#{nombreManejagor.atributo}" locale="es"
+                                                    pattern="dd/MM/yyyy" showOn="button" 
+                                                    size="12" tabindex="2" style="width: 100%;">
+                                            <p:ajax event="dateSelect" />
+                                        </p:calendar>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                                        
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Nombre del Proyecto</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                    <h:inputText id="nompro" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Institución Cultural</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <h:selectOneMenu id="inscul" value="#{nombreManejador.atributo}"  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Representante Legal</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <h:selectOneMenu id="repleg" value=""  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Persona de Contacto</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="percon" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Correo de Contacto</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="corcon" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Teléfono de Contacto</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <div>
+                                    <h:inputText id="telcon" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Unidad que Recibe</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="unirec" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label >Fecha Recepción UTR</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <p:calendar id="fecrec"
+                                                    value="#{nombreManejagor.atributo}" locale="es"
+                                                    pattern="dd/MM/yyyy" showOn="button" 
+                                                    size="12" tabindex="2" style="width: 100%;">
+                                            <p:ajax event="dateSelect" />
+                                        </p:calendar>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Fecha de Inicio</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <p:calendar id="fecini"
+                                                    value="#{nombreManejagor.atributo}" locale="es"
+                                                    pattern="dd/MM/yyyy" showOn="button" 
+                                                    size="12" tabindex="2" style="width: 100%;">
+                                            <p:ajax event="dateSelect" />
+                                        </p:calendar>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label >Fecha de Fin</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <p:calendar id="fecfin"
+                                                    value="#{nombreManejagor.atributo}" locale="es"
+                                                    pattern="dd/MM/yyyy" showOn="button" 
+                                                    size="12" tabindex="2" style="width: 100%;">
+                                            <p:ajax event="dateSelect" />
+                                        </p:calendar>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                                
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Ojetivo</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <textarea name="objeti" value="#{nombreManejagor.atributo}" rows="3" style="width: 100%;">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>    
+                                
+                                
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Metas / Alcance</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <textarea name="metas" value="#{nombreManejagor.atributo}" rows="3" style="width: 100%;">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>     
+                                
+                             
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Descripción</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <textarea name="descri" value="#{nombreManejagor.atributo}" rows="3" style="width: 100%;">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Dirección Nacional</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <h:selectOneMenu id="dirnac" value="#{nombreManejador.atributo}"  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Número de Convenio</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:inputText id="numcon" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Fuente de Financiamiento</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <h:selectOneMenu id="fuefin" value="#{nombreManejador.atributo}"  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Monto SEC</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:inputText id="monsec" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Monto Contraporte IC</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:inputText id="moncon" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Formulario de Verificación</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="button" value="        Ver        " />
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label >Monto Total del Proyecto</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:inputText id="montot" value="#{nombreManejador.atributo}" readonly="readonly" style="width: 100%;"/> 
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Documentos Adjuntos</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="button" value="    Adjuntar    " />
+                                </div>
+                            </div>
+                            
+                            <!-- Botones Parte Inferior Derecha -->
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-5">
+                                    <p:commandButton id="guard" class="btn btn-primary" value="Guardar"  action="#{bienesBean.guardarB()}"  
+                                                     rendered="#{!bienesBean.edit}" disabled="#{bienesBean.estado}" update="@all" 
+                                                     process="@this adiBien"  oncomplete="handleRequest(xhr, status, args);" />
+                                    <script type="text/javascript">
+                                        function handleRequest(xhr, status, args) {
+                                            if (args.validationFailed) {
+                                                alert('Ha ocurrido un error. Complete los datos necesarios');
+                                            } else {
+                                                alert('Datos adicionados correctamente');
+                                            }
+                                        }
+                                    </script>
+
+                                    <p:commandButton id="Nuevo" value="Cancelar" class="btn btn-primary"
+                                                     action="#{bienesBean.limpiarB()}" process="@this" update="@form">
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane fade active in" id="aprobacion">
+                    <div class="well bs-component">
+                        <h:form id="adiBien" class="form-horizontal" enctype="multipart/form-data" >
+                            <p:growl id="growl" />
+                            <legend>
+                                <div class="form-header">
+                                    <!-- <button type="button" class="close"  aria-hidden="true">Cancelar ×</button> -->
+                                    <h4 class="modal-title">APROBACIÓN DEL PROYECTO</h4>
+                                </div>
+                            </legend>
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Fecha de Aprobación</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <p:calendar id="fecapr"
+                                                    value="#{nombreManejagor.atributo}" locale="es"
+                                                    pattern="dd/MM/yyyy" showOn="button" 
+                                                    size="12" tabindex="2" style="width: 100%;">
+                                            <p:ajax event="dateSelect" />
+                                        </p:calendar>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                                                        
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Aprobado por</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="aprpor" value="#{nombreManejador.atributo}" style="width: 100%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Monto Aprobado SEC</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="monsec" value="#{nombreManejador.atributo}" style="width: 50%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Monto Contraparte</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="moncon" value="#{nombreManejador.atributo}" style="width: 50%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <label >Monto Total Aprobado</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>
+                                    <h:inputText id="montot" value="#{nombreManejador.atributo}" style="width: 50%;"/> 
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Fecha de Observación</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <p:calendar id="fecobs"
+                                                    value="#{nombreManejagor.atributo}" locale="es"
+                                                    pattern="dd/MM/yyyy" showOn="button" 
+                                                    size="12" tabindex="2" style="width: 100%;">
+                                            <p:ajax event="dateSelect" />
+                                        </p:calendar>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Observación</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <textarea name="observ" value="#{nombreManejagor.atributo}" rows="5" style="width: 100%;">
+                                    </textarea>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Documentos Adjuntos</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="button" value="    Adjuntar    " />
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Estado</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h:selectOneMenu id="estado" value="#{nombreManejador.atributo}"  style="width: 50%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- Botones Parte Inferior Derecha -->
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-5">
+                                    <p:commandButton id="guard" class="btn btn-primary" value="Guardar"  action="#{bienesBean.guardarB()}"  
+                                                     rendered="#{!bienesBean.edit}" disabled="#{bienesBean.estado}" update="@all" 
+                                                     process="@this adiBien"  oncomplete="handleRequest(xhr, status, args);" />
+                                    <script type="text/javascript">
+                                        function handleRequest(xhr, status, args) {
+                                            if (args.validationFailed) {
+                                                alert('Ha ocurrido un error. Complete los datos necesarios');
+                                            } else {
+                                                alert('Datos adicionados correctamente');
+                                            }
+                                        }
+                                    </script>
+
+                                    <p:commandButton id="Nuevo" value="Cancelar" class="btn btn-primary"
+                                                     action="#{bienesBean.limpiarB()}" process="@this" update="@form">
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane fade active in" id="facilitadores">
+                    <div class="well bs-component">
+                        <h:form id="adiBien" class="form-horizontal" enctype="multipart/form-data" >
+                            <p:growl id="growl" />
+                            <legend>
+                                <div class="form-header">
+                                    <!-- <button type="button" class="close"  aria-hidden="true">Cancelar ×</button> -->
+                                    <h4 class="modal-title">FACILITADORES DEL PROYECTO</h4>
+                                </div>
+                            </legend>
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Facilitadores Administrativo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h:selectOneMenu id="facadm" value="#{nombreManejador.atributo}"  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                                                        
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Facilitadores Tecnico</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h:selectOneMenu id="factec" value="#{nombreManejador.atributo}"  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Facilitador Cultural</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h:selectOneMenu id="faccul" value="#{nombreManejador.atributo}"  style="width: 100%;" converter="#{edifConverter}" >
+                                            <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" itemValue=""/>
+                                            <f:selectItems value="#{nombreManejador.atributo}" var="" itemLabel="" itemValue=""/>
+                                            <p:ajax  listener="#{nombreManejador.atributo}" update=""/>                         
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                                                        
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <label>Documentos Adjuntos</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="button" value="    Adjuntar    " />
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <!-- Botones Parte Inferior Derecha -->
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-5">
+                                    <p:commandButton id="guard" class="btn btn-primary" value="Guardar"  action="#{bienesBean.guardarB()}"  
+                                                     rendered="#{!bienesBean.edit}" disabled="#{bienesBean.estado}" update="@all" 
+                                                     process="@this adiBien"  oncomplete="handleRequest(xhr, status, args);" />
+                                    <script type="text/javascript">
+                                        function handleRequest(xhr, status, args) {
+                                            if (args.validationFailed) {
+                                                alert('Ha ocurrido un error. Complete los datos necesarios');
+                                            } else {
+                                                alert('Datos adicionados correctamente');
+                                            }
+                                        }
+                                    </script>
+
+                                    <p:commandButton id="Nuevo" value="Cancelar" class="btn btn-primary"
+                                                     action="#{bienesBean.limpiarB()}" process="@this" update="@form">
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+                
+                
+
+            </div>
+
+        </ui:define>
+        
+
+    </ui:composition>
+</html>
+
