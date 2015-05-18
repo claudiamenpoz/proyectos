@@ -21,6 +21,12 @@ public interface ProyectosFacadeLocal {
     void edit(Proyectos proyectos);
 
     void remove(Proyectos proyectos);
+    
+    public List getList();
+    
+    public List busqueda(String desc);
+    
+    public Proyectos getProyecto(Integer proyecto);
 
     Proyectos find(Object id);
 

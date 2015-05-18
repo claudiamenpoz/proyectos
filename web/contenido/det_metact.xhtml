@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"        
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="./../plantillas/plantilla1.xhtml">
+
+        <!-- Contenedor -->
+        <ui:define name="content">
+            <!-- Formulario -->
+            <h:form id="formPerfiles" >
+                <!-- Tabla responsive -->
+                <div class="table table-responsive table-bordered " >
+                    <table id="perfiles" class="table table-striped table-bordered table-hover table-condensed">
+                        
+                        <!-- Espacio en blanco -->
+                        <div class="col-md-12"><br /></div>
+                        
+                        <!-- Información del proyecto -->
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <h:outputLabel value="Proyecto:" style="font-weight: bold"/>  
+                            </div>
+                            <div class="col-md-11">
+                                <h:outputLabel value="#{proyectosBean.proyectoSeleccionado.proyeNombre}" style="font-weight: bold"/>  
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <h:outputLabel value="Institución:" style="font-weight: bold"/>  
+                            </div>
+                            <div class="col-md-11">
+                                <h:outputLabel value="#{proyectosBean.proyectoSeleccionado.instId.instNombre}" style="font-weight: bold"/> 
+                                <h:outputLabel value="#{proyectosBean.proyectoSeleccionado}" style="font-weight: bold"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Espacio en blanco -->
+                        <div class="col-md-12"><br /></div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <h:outputLabel value="Detalle de Metas" style="font-weight: bold"/>  
+                            </div>
+                        </div>
+                        
+                        <!--  Tabla con las metas -->
+                        <table id="" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th><center>Id</center></th>
+                                    <th><center>Nombre de la Meta</center></th>
+                                    <th><center>Monto Total</center></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{proyectosBean.proyectoSeleccionado.metasCollection}" var="proyecto" >
+                                    <tr>
+                                        <td align="center">#{proyecto.metaId}</td>
+                                        <td>#{proyecto.metaNombre}</td>
+                                        <td align="right">#{proyecto.metaMtoContraparte + proyecto.metaMtoSec}</td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Para botón "Consultar Meta" -->
+                        <div class="form-group">
+
+                            <!-- Botón -->
+                            <div align="center" class="col-md-12">
+                                <CENTER>
+                                    <h:commandLink value="Consultar Meta" class="btn btn-default btn-xm" action="ver_perfil.jsf">
+                                        <f:setPropertyActionListener value="#{meta}"
+                                                                     target="#{metasBean.metaSeleccionada}"  />
+                                    </h:commandLink>
+                                </CENTER>
+                            </div>
+                        </div>
+                        
+                        <!-- Espacio en blanco -->
+                        <div class="col-md-12"><br /></div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <h:outputLabel value="Detalle de Actividades por Meta Seleccionada" style="font-weight: bold"/>  
+                            </div>
+                        </div>
+                        
+                        </table><table id="" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre de la Actividad</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <ui:repeat value="#{proyectosBean.proyectos}" var="proyecto" >
+                                    <tr>
+                                        <td align="center">#{proyecto.proyeId}</td>
+                                        <td>#{proyecto.proyeNombre}</td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                            
+                            
+                        
+                    </table>
+                </div>
+                
+                <!-- Para botón "Consultar Actividad" y "Regresar" -->
+                <div class="form-group">
+                    
+                    <div align="center" class="col-md-12">
+                            <!-- Botón "Consultar Actividad"-->    
+                            <h:commandLink value="Consultar Actividad" class="btn btn-default btn-xm" action="ver_perfil.jsf">
+                                <f:setPropertyActionListener value="#{proyecto}"
+                                                             target="#{proyectosBean.proyectoSeleccionado}"  />
+                            </h:commandLink>
+                            <!-- Botón "Regresar"-->
+                            <h:commandLink value="" class="btn btn-default btn-xm" action="ver_perfil.jsf">
+                                <span class="glyphicon glyphicon-share-alt"></span>Regresar
+                            </h:commandLink>
+                        
+                    </div>
+                    
+                    <!-- Espacio en blanco -->
+                    <div class="col-md-12"><br /></div>
+                    
+                </div>
+                
+             </h:form>
+        </ui:define>
+        
+        <ui:define name="scripts">
+            <script>
+                $(document).ready(function() {
+                    
+                    $('table.display').dataTable(
+                            {
+                                "oLanguage": {
+                                    "sProcessing": "Procesando...",
+                                    "sLengthMenu": "Mostrar _MENU_ registros",
+                                    "sZeroRecords": "No se encontraron resultados",
+                                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                    "sInfoPostFix": "",
+                                    "sSearch": "Buscar:",
+                                    "sUrl": "",
+                                    "sInfoThousands": ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst": "Primero",
+                                        "sLast": "Último",
+                                        "sNext": "Siguiente",
+                                        "sPrevious": "Anterior"
+                                    },
+                                    "oAria": {
+                                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                                    }
+                                }
+                            }
+                    );
+                    
+                    
+                } );
+            </script>
+        </ui:define>
+    </ui:composition>    
+</html>
+

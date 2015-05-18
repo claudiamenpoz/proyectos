@@ -29,5 +29,9 @@ public interface ActividadesFacadeLocal {
     List<Actividades> findRange(int[] range);
 
     int count();
+
+    public List<Actividades> busqueda(String desc);
+
+    public List<Actividades> getList();
     
 }

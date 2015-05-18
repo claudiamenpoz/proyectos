@@ -29,5 +29,9 @@ public interface MetasFacadeLocal {
     List<Metas> findRange(int[] range);
 
     int count();
+
+    public List<Metas> getList();
+
+    public List<Metas> busqueda(String desc);
     
 }
